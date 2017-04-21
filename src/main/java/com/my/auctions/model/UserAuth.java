@@ -1,4 +1,4 @@
-package com.my.security.model;
+package com.my.auctions.model;
 
 import java.util.Arrays;
 import java.util.Collection;

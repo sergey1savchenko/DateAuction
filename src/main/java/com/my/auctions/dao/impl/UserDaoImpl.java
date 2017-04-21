@@ -1,4 +1,4 @@
-package com.my.security.dao.impl;
+package com.my.auctions.dao.impl;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,12 +9,13 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-import com.my.security.model.UserAuth;
+import com.my.auctions.model.UserAuth;
 
 @Repository
 public class UserDaoImpl{
     
-    private static final String SQL_SELECT_USER_AUTH_BY_EMAIL = "SELECT users.id, users.email, users.password, roles.role FROM users INNER JOIN roles ON users.id_role=roles.id WHERE users.email=?";
+    private static final String SQL_SELECT_USER_AUTH_BY_EMAIL = "SELECT Users.id, Users.email, Users.password, Roles.role "+
+    											"FROM Users INNER JOIN Roles ON Users.roleId=Roles.id WHERE Users.email=?";
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
