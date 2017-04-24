@@ -1,6 +1,6 @@
 package com.my.auctions.model;
 
-import com.mysql.jdbc.Blob;
+import java.sql.Blob;
 
 public class Photo {
 	

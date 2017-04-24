@@ -1,6 +1,6 @@
 package com.my.auctions.service.impl;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,17 +36,17 @@ public class AuctionServiceImpl implements AuctionService {
 	}
 
 	@Override
-	public ArrayList<Auction> getAllActive() {
+	public List<Auction> getAllActive() {
 		return auctionDao.getAllActive();
 	}
 
 	@Override
-	public ArrayList<Auction> getAllNotStarted() {
+	public List<Auction> getAllNotStarted() {
 		return auctionDao.getAllNotStarted();
 	}
 
 	@Override
-	public ArrayList<Auction> getAllFinished() {
+	public List<Auction> getAllFinished() {
 		return auctionDao.getAllFinished();
 	}
 

@@ -2,12 +2,14 @@ package com.my.auctions.dao.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
@@ -70,26 +72,44 @@ public class AuctionDaoImpl implements AuctionDao {
 
 	@Override
 	public Auction getById(int idAuction) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Auction> auctions = jdbcTemplate.query(SQL_GET_AUCTION_BY_ID, new AuctionMapper(), idAuction);
+		return auctions.isEmpty() ? null : auctions.get(0);
 	}
 
 	@Override
-	public ArrayList<Auction> getAllActive() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Auction> getAllActive() {
+		return jdbcTemplate.query(SQL_GET_ACTIVE_AUCTIONS, new AuctionMapper());
 	}
 
 	@Override
-	public ArrayList<Auction> getAllNotStarted() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Auction> getAllNotStarted() {
+		return jdbcTemplate.query(SQL_GET_NOT_STARTED_AUCTIONS, new AuctionMapper());
 	}
 
 	@Override
-	public ArrayList<Auction> getAllFinished() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Auction> getAllFinished() {
+		return jdbcTemplate.query(SQL_GET_FINISHED_AUCTIONS, new AuctionMapper());
+	}
+	
+	private static class AuctionMapper implements RowMapper<Auction> {
+
+		@Override
+		public Auction mapRow(ResultSet rs, int rowNum) throws SQLException {
+			Auction auction = new Auction();
+			auction.setId(rs.getInt("id"));
+			auction.setMinBid(rs.getInt("minBid"));
+			auction.setMaxBid(rs.getInt("maxBid"));
+			auction.setStep(rs.getInt("step"));
+			auction.setStartDate(rs.getDate("startDate"));
+			auction.setEndDate(rs.getDate("endDate"));
+			auction.setTitle(rs.getString("title"));
+			auction.setAddress(rs.getString("address"));
+			auction.setPurpose(rs.getString("purpose"));
+			auction.setDescription(rs.getString("description"));
+			auction.setPhoto(rs.getBlob("photo"));
+			return auction;
+		}
+
 	}
 
 }

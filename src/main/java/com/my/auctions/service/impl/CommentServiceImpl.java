@@ -1,6 +1,6 @@
 package com.my.auctions.service.impl;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,7 +26,7 @@ public class CommentServiceImpl implements CommentService {
 	}
 
 	@Override
-	public ArrayList<Comment> getAllByLot(int idLot) {
+	public List<Comment> getAllByLot(int idLot) {
 		return commentDao.getAllByLot(idLot);
 	}
 

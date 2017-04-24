@@ -3,7 +3,7 @@ package com.my.auctions.dao.impl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -67,13 +67,13 @@ public class ApplicationDaoImpl implements ApplicationDao {
 	}
 
 	@Override
-	public ArrayList<Application> getAllApprovedByAuction(int idAuction) {
+	public List<Application> getAllApprovedByAuction(int idAuction) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<Application> getAllNotApproved() {
+	public List<Application> getAllNotApproved() {
 		// TODO Auto-generated method stub
 		return null;
 	}

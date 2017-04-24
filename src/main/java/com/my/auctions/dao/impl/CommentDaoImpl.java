@@ -3,7 +3,7 @@ package com.my.auctions.dao.impl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -49,7 +49,7 @@ public class CommentDaoImpl implements CommentDao {
 	}
 
 	@Override
-	public ArrayList<Comment> getAllByLot(int idLot) {
+	public List<Comment> getAllByLot(int idLot) {
 		// TODO Auto-generated method stub
 		return null;
 	}

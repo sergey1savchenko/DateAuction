@@ -1,8 +1,7 @@
 package com.my.auctions.model;
 
+import java.sql.Blob;
 import java.util.ArrayList;
-
-import com.mysql.jdbc.Blob;
 
 public class User {
 	

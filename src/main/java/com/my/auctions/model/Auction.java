@@ -1,9 +1,8 @@
 package com.my.auctions.model;
 
+import java.sql.Blob;
 import java.sql.Date;
 import java.util.ArrayList;
-
-import com.mysql.jdbc.Blob;
 
 public class Auction {
 	

@@ -1,6 +1,6 @@
 package com.my.auctions.service.impl;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,7 +26,7 @@ public class PhotoServiceImpl implements PhotoService {
 	}
 
 	@Override
-	public ArrayList<Photo> getAllByUser(int idUser) {
+	public List<Photo> getAllByUser(int idUser) {
 		return photoDao.getAllByUser(idUser);
 	}
 

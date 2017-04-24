@@ -1,6 +1,6 @@
 package com.my.auctions.service;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import com.my.auctions.model.Auction;
 
@@ -12,8 +12,8 @@ public interface AuctionService {
 	
 	Auction getById(int idAuction);
 	
-	ArrayList<Auction> getAllActive();
-	ArrayList<Auction> getAllNotStarted();
-	ArrayList<Auction> getAllFinished();
+	List<Auction> getAllActive();
+	List<Auction> getAllNotStarted();
+	List<Auction> getAllFinished();
 
 }

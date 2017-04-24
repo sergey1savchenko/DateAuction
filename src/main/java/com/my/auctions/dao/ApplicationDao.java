@@ -1,6 +1,6 @@
 package com.my.auctions.dao;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import com.my.auctions.model.Application;
 
@@ -11,7 +11,7 @@ public interface ApplicationDao {
 	void delete(int idApplication);
 	
 	Application getById(int idApplication);
-	ArrayList<Application> getAllApprovedByAuction(int idAuction);
-	ArrayList<Application> getAllNotApproved();
+	List<Application> getAllApprovedByAuction(int idAuction);
+	List<Application> getAllNotApproved();
 
 }
