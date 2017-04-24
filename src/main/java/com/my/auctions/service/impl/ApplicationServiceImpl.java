@@ -36,8 +36,15 @@ public class ApplicationServiceImpl implements ApplicationService {
 	}
 
 	@Override
-	public ArrayList<Application> getAllByAuction(int idAuction) {
-		return applicationDao.getAllByAuction(idAuction);
+	public ArrayList<Application> getAllApprovedByAuction(int idAuction) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<Application> getAllNotApproved() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

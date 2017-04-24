@@ -1,9 +1,15 @@
 package com.my.auctions.dao.impl;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementCreator;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import com.my.auctions.dao.AuctionDao;
@@ -28,20 +34,38 @@ public class AuctionDaoImpl implements AuctionDao {
 
 	@Override
 	public void add(Auction auction) {
-		// TODO Auto-generated method stub
+		KeyHolder keyHolder = new GeneratedKeyHolder();
+		jdbcTemplate.update(new PreparedStatementCreator() {
 
+			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+				PreparedStatement ps = con.prepareStatement(SQL_ADD_AUCTION, new String[] { "id" });
+				ps.setInt(1, auction.getMinBid());
+				ps.setInt(2, auction.getMaxBid());
+				ps.setInt(3, auction.getStep());
+				ps.setDate(4, auction.getStartDate());
+				ps.setDate(5, auction.getEndDate());
+				ps.setString(6, auction.getTitle());
+				ps.setString(7, auction.getAddress());
+				ps.setString(8, auction.getPurpose());
+				ps.setString(9, auction.getDescription());
+				ps.setBlob(10, auction.getPhoto());
+				return ps;
+			}
+			
+		}, keyHolder);	
+		auction.setId(keyHolder.getKey().intValue());
 	}
 
 	@Override
 	public void update(Auction auction) {
-		// TODO Auto-generated method stub
-
+		jdbcTemplate.update(SQL_UPDATE_AUCTION, auction.getMinBid(), auction.getMaxBid(), auction.getStep(), 
+				auction.getStartDate(), auction.getEndDate(), auction.getTitle(), auction.getAddress(), auction.getPurpose(), 
+				auction.getDescription(), auction.getDescription(), auction.getPhoto(), auction.getId());
 	}
 
 	@Override
 	public void delete(int idAuction) {
-		// TODO Auto-generated method stub
-
+		jdbcTemplate.update(SQL_DELETE_AUCTION, idAuction);
 	}
 
 	@Override

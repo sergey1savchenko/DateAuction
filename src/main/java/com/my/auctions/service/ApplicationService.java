@@ -11,6 +11,6 @@ public interface ApplicationService {
 	void delete(int idApplication);
 	
 	Application getById(int idApplication);
-	ArrayList<Application> getAllByAuction(int idAuction);
-
+	ArrayList<Application> getAllApprovedByAuction(int idAuction);
+	ArrayList<Application> getAllNotApproved();
 }
