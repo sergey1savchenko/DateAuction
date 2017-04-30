@@ -2,6 +2,7 @@ package com.my.auctions.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class HomeController {
@@ -29,6 +30,11 @@ public class HomeController {
     @GetMapping( "user" )
     public String user() {
     	return "user";
+    }
+    
+    @RequestMapping("404")
+    public String error404(){
+	return "404";
     }
 	
 }
